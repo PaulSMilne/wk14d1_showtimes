@@ -48,13 +48,10 @@
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
+	var FilmBox = __webpack_require__(159);
 	
 	window.onload = function () {
-	  ReactDOM.render(React.createElement(
-	    'h1',
-	    null,
-	    ' App Started '
-	  ), document.getElementById('app'));
+	  ReactDOM.render(React.createElement(FilmBox, null), document.getElementById('app'));
 	};
 
 /***/ },
@@ -19750,6 +19747,62 @@
 	
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var MoreLink = __webpack_require__(160);
+	var ShowTimes = __webpack_require__(161);
+	var FilmTable = __webpack_require__(162);
+	var FilmTimes = __webpack_require__(163);
+	
+	var movies = [{ name: "Manchester by the Sea", url: "http://www.imdb.com/title/tt4034228/", showTimesURL: "http://www.imdb.com/showtimes/title/tt4034228" }, { name: "Live by Night", url: "http://www.imdb.com/title/tt2361317/", showTimesURL: "http://www.imdb.com/showtimes/title/tt2361317/" }, { name: "A Monster Calls", url: "http://www.imdb.com/title/tt3416532/", showTimesURL: "http://www.imdb.com/showtimes/title/tt3416532/" }, { name: "The Edge of Seventeen", url: "http://www.imdb.com/title/tt1878870/", showTimesURL: "http://www.imdb.com/showtimes/title/tt1878870/" }];
+	
+	var FilmBox = React.createClass({
+	     displayName: 'FilmBox',
+	
+	
+	     getInitialState: function getInitialState() {
+	          return {
+	               data: movies
+	          };
+	     },
+	
+	     render: function render() {},
+	
+	     handleShowTimes: function handleShowTimes() {}
+	
+	});
+	
+	module.exports = FilmBox;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 161 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 162 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 163 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 /***/ }
 /******/ ]);
