@@ -13,6 +13,20 @@ var movies = [
 
 var FilmBox = React.createClass({
 
+     getInitialState: function(){
+          return {
+               data: movies
+          }
+     },
+
+     render: function(){
+
+     },
+     
+     handleShowTimes: function(){
+
+     }
+
 });
 
 module.exports = FilmBox;
