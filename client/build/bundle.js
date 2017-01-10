@@ -19755,16 +19755,20 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var FilmTable = __webpack_require__(162);
 	var MoreLink = __webpack_require__(160);
 	var ShowTimes = __webpack_require__(161);
-	var FilmTable = __webpack_require__(162);
-	var FilmTimes = __webpack_require__(163);
 	
 	var movies = [{ name: "Manchester by the Sea", url: "http://www.imdb.com/title/tt4034228/", showTimesURL: "http://www.imdb.com/showtimes/title/tt4034228", id: "tt4034228" }, { name: "Live by Night", url: "http://www.imdb.com/title/tt2361317/", showTimesURL: "http://www.imdb.com/showtimes/title/tt2361317/", id: "tt2361317" }, { name: "A Monster Calls", url: "http://www.imdb.com/title/tt3416532/", showTimesURL: "http://www.imdb.com/showtimes/title/tt3416532/", id: "tt3416532" }, { name: "The Edge of Seventeen", url: "http://www.imdb.com/title/tt1878870/", showTimesURL: "http://www.imdb.com/showtimes/title/tt1878870/", id: "tt1878870" }];
 	
 	var FilmBox = React.createClass({
 	     displayName: 'FilmBox',
 	
+	
+	     handleShowTimes: function handleShowTimes() {
+	          console.log("Button pressed");
+	          window.open("http://www.imdb.com/showtimes/location/UK/EH1%202RL");
+	     },
 	
 	     getInitialState: function getInitialState() {
 	          return {
@@ -19775,7 +19779,7 @@
 	     render: function render() {
 	          return React.createElement(
 	               'div',
-	               { className: 'FilmBox' },
+	               { className: 'film_box' },
 	               React.createElement(
 	                    'h1',
 	                    null,
@@ -19786,7 +19790,7 @@
 	               React.createElement(
 	                    'p',
 	                    null,
-	                    React.createElement(ShowTimes, null)
+	                    React.createElement(ShowTimes, { handleShowTimes: this.handleShowTimes })
 	               )
 	          );
 	     }
@@ -19803,23 +19807,17 @@
 	
 	var React = __webpack_require__(1);
 	
-	var MoreLink = React.createClass({
-	     displayName: "MoreLink",
-	
-	
-	     render: function render() {
-	          return React.createElement(
-	               "p",
-	               { className: "more_link" },
-	               React.createElement(
-	                    "a",
-	                    { href: "http://www.imdb.com/calendar/?region=gb" },
-	                    "Upcoming releases for the UK"
-	               )
-	          );
-	     }
-	
-	});
+	var MoreLink = function MoreLink() {
+	     return React.createElement(
+	          "p",
+	          { className: "more_link" },
+	          React.createElement(
+	               "a",
+	               { href: "http://www.imdb.com/calendar/?region=gb" },
+	               "Upcoming releases for the UK"
+	          )
+	     );
+	};
 	
 	module.exports = MoreLink;
 
@@ -19831,23 +19829,13 @@
 	
 	var React = __webpack_require__(1);
 	
-	var ShowTimes = React.createClass({
-	     displayName: "ShowTimes",
-	
-	
-	     handleShowTimes: function handleShowTimes() {
-	          console.log("Button pressed");
-	     },
-	
-	     render: function render() {
-	          return React.createElement(
-	               "button",
-	               { onClick: this.handleShowTimes, className: "show_times" },
-	               "Show Times"
-	          );
-	     }
-	
-	});
+	var ShowTimes = function ShowTimes(props) {
+	     return React.createElement(
+	          "button",
+	          { onClick: props.handleShowTimes, className: "show_times" },
+	          "Show Times"
+	     );
+	};
 	
 	module.exports = ShowTimes;
 
@@ -19860,24 +19848,18 @@
 	var React = __webpack_require__(1);
 	var FilmTimes = __webpack_require__(163);
 	
-	var FilmTable = React.createClass({
-	     displayName: 'FilmTable',
+	var FilmTable = function FilmTable(props) {
 	
+	     var filmComponents = props.films.map(function (film) {
+	          return React.createElement(FilmTimes, { film: film });
+	     });
 	
-	     render: function render() {
-	
-	          var filmComponents = this.props.films.map(function (filmObject) {
-	               return React.createElement(FilmTimes, { key: filmObject.id, name: filmObject.name });
-	          });
-	
-	          return React.createElement(
-	               'p',
-	               null,
-	               'Film table goes here'
-	          );
-	     }
-	
-	});
+	     return React.createElement(
+	          'table',
+	          null,
+	          filmComponents
+	     );
+	};
 	
 	module.exports = FilmTable;
 
@@ -19889,34 +19871,32 @@
 	
 	var React = __webpack_require__(1);
 	
-	var FilmTimes = React.createClass({
-	     displayName: 'FilmTimes',
-	
-	     render: function render() {
-	          return React.createElement(
-	               'tr',
+	var FilmTimes = function FilmTimes(props) {
+	     return React.createElement(
+	          'tr',
+	          null,
+	          React.createElement(
+	               'td',
 	               null,
 	               React.createElement(
-	                    'td',
-	                    null,
-	                    React.createElement(
-	                         'a',
-	                         { href: this.props.url },
-	                         this.props.name
-	                    )
-	               ),
-	               React.createElement(
-	                    'td',
-	                    null,
-	                    React.createElement(
-	                         'a',
-	                         { href: this.props.showTimesURL },
-	                         'Show Times'
-	                    )
+	                    'a',
+	                    { href: props.film.url },
+	                    props.film.name
 	               )
-	          );
-	     }
-	});
+	          ),
+	          React.createElement(
+	               'td',
+	               null,
+	               React.createElement(
+	                    'a',
+	                    { href: props.film.showTimesURL },
+	                    'Show Times'
+	               )
+	          )
+	     );
+	};
+	
+	module.exports = FilmTimes;
 
 /***/ }
 /******/ ]);

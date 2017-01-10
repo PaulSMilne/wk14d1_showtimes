@@ -1,24 +1,22 @@
 var React = require('react');
 var FilmTimes = require('./FilmTimes.jsx');
 
-var FilmTable = React.createClass({
+var FilmTable = function(props){
 
-     render: function(){
+     var filmComponents = props.films.map(
+          function(film){
+               return(
+                    <FilmTimes film={film} />
+               )
+          }
+     );
 
-          var filmComponents = this.props.films.map(
-               function(filmObject){
-                    return(
-                         <FilmTimes key={filmObject.id} name={filmObject.name}>
-                         </FilmTimes>
-                    )
-               }
-          );
+     return(
+          <table>
+               {filmComponents}
+          </table>
+     )
+}
 
-          return(
-               <p>Film table goes here</p>
-          )
-     }
-
-});
 
 module.exports = FilmTable;

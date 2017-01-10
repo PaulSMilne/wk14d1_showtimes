@@ -1,12 +1,12 @@
 var React = require('react');
 
-var FilmTimes = React.createClass({
-     render: function() {
-          return(
-               <tr>
-                    <td><a href={this.props.url}>{this.props.name}</a></td>
-                    <td><a href={this.props.showTimesURL}>Show Times</a></td>
-               </tr>
-          )
-     }
-})
+var FilmTimes = function(props) {
+     return(
+          <tr>
+               <td><a href={props.film.url}>{props.film.name}</a></td>
+               <td><a href={props.film.showTimesURL}>Show Times</a></td>
+          </tr>
+     )
+};
+
+module.exports = FilmTimes;

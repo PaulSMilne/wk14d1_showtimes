@@ -1,8 +1,7 @@
 var React = require('react');
+var FilmTable = require('./FilmTable.jsx');
 var MoreLink = require('./MoreLink.jsx');
 var ShowTimes = require('./ShowTimes.jsx');
-var FilmTable = require('./FilmTable.jsx');
-var FilmTimes = require('./FilmTimes.jsx');
 
 var movies = [
   {name: "Manchester by the Sea", url:"http://www.imdb.com/title/tt4034228/", showTimesURL: "http://www.imdb.com/showtimes/title/tt4034228", id:"tt4034228"},
@@ -13,6 +12,11 @@ var movies = [
 
 var FilmBox = React.createClass({
 
+  handleShowTimes: function(){
+       console.log("Button pressed");
+       window.open("http://www.imdb.com/showtimes/location/UK/EH1%202RL");
+  },
+
      getInitialState: function(){
           return {
                data: movies
@@ -21,7 +25,7 @@ var FilmBox = React.createClass({
 
      render: function(){
           return(
-               <div className='FilmBox'>
+               <div className='film_box'>
 
                     <h1>FilmBox file running</h1>
 
@@ -30,7 +34,7 @@ var FilmBox = React.createClass({
                     <MoreLink />
                     
                     <p>
-                    <ShowTimes />
+                    <ShowTimes handleShowTimes={this.handleShowTimes}/>
                     </p>
 
                </div>
