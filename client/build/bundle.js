@@ -19772,7 +19772,17 @@
 	          };
 	     },
 	
-	     render: function render() {},
+	     render: function render() {
+	          return React.createElement(
+	               'div',
+	               { className: 'FilmBox' },
+	               React.createElement(
+	                    'h1',
+	                    null,
+	                    'FilmBox file running'
+	               )
+	          );
+	     },
 	
 	     handleShowTimes: function handleShowTimes() {}
 	
