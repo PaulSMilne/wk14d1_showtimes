@@ -19780,6 +19780,13 @@
 	                    'h1',
 	                    null,
 	                    'FilmBox file running'
+	               ),
+	               React.createElement(FilmTable, null),
+	               React.createElement(MoreLink, null),
+	               React.createElement(
+	                    'p',
+	                    null,
+	                    React.createElement(ShowTimes, null)
 	               )
 	          );
 	     },
@@ -19792,21 +19799,83 @@
 
 /***/ },
 /* 160 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var MoreLink = React.createClass({
+	     displayName: "MoreLink",
+	
+	
+	     render: function render() {
+	          return React.createElement(
+	               "p",
+	               { className: "more_link" },
+	               React.createElement(
+	                    "a",
+	                    { href: "http://www.imdb.com/calendar/?region=gb" },
+	                    "Upcoming releases for the UK"
+	               )
+	          );
+	     }
+	
+	});
+	
+	module.exports = MoreLink;
 
 /***/ },
 /* 161 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var ShowTimes = React.createClass({
+	     displayName: "ShowTimes",
+	
+	
+	     handleShowTimes: function handleShowTimes() {
+	          console.log("Button pressed");
+	     },
+	
+	     render: function render() {
+	          return React.createElement(
+	               "button",
+	               { onClick: this.handleShowTimes, className: "show_times" },
+	               "Show Times"
+	          );
+	     }
+	
+	});
+	
+	module.exports = ShowTimes;
 
 /***/ },
 /* 162 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var FilmTable = React.createClass({
+	     displayName: 'FilmTable',
+	
+	
+	     render: function render() {
+	          return React.createElement(
+	               'p',
+	               null,
+	               'Film table goes here'
+	          );
+	     }
+	
+	});
+	
+	module.exports = FilmTable;
 
 /***/ },
 /* 163 */

@@ -22,7 +22,17 @@ var FilmBox = React.createClass({
      render: function(){
           return(
                <div className='FilmBox'>
+
                     <h1>FilmBox file running</h1>
+
+                    <FilmTable />
+
+                    <MoreLink />
+                    
+                    <p>
+                    <ShowTimes />
+                    </p>
+
                </div>
           );
      },
